@@ -12,6 +12,7 @@ const main = async () => {
     await almoco()
     await retorno()
     await saida()
+    await vida()
 }
 
 const filePath = () => {
