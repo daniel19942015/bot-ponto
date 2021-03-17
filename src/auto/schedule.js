@@ -51,7 +51,7 @@ const saida = async () => {
     })
 }
 
-const saida = async () => {
+const vida = async () => {
 
     let vida = schedule.scheduleJob(file.vida, async () => {
         await sendMessage("Teste vida")
