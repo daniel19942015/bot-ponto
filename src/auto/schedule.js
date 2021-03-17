@@ -51,6 +51,14 @@ const saida = async () => {
     })
 }
 
+const saida = async () => {
+
+    let vida = schedule.scheduleJob(file.vida, async () => {
+        await sendMessage("Teste vida")
+        console.log("Send to message in Telegram -> Teste")
+        vida.cancel()
+    })
+}
 
 const readFile = (path) => {
     try {
