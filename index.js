@@ -18,6 +18,6 @@ app.listen(port, async () => {
     await main()
     wokeDyno({
         url: uri,
-        interval: 7200000
+        interval: 1200000
     }).start()
 })
