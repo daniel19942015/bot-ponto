@@ -44,15 +44,15 @@ async function screenshot() {
                     height: 1080
                 })
 
-                console.info(`[${DataHora()}] [NAV]: User!`);
-                const login = await page.$x('//*[@id="login_field"]');
-                await login[0].type("daniel199257@gmail.com");
+                // console.info(`[${DataHora()}] [NAV]: User!`);
+                // const login = await page.$x('//*[@id="login_field"]');
+                // await login[0].type("daniel199257@gmail.com");
 
-                console.info(`[${DataHora()}] [NAV]: Key!`);
-                const password = await page.$x('//*[@id="password"]');
-                await password[0].type("Dan549216895");
+                // console.info(`[${DataHora()}] [NAV]: Key!`);
+                // const password = await page.$x('//*[@id="password"]');
+                // await password[0].type("Dan549216895");
 
-                await page.keyboard.press(String.fromCharCode(13));
+                // await page.keyboard.press(String.fromCharCode(13));
 
                 await sleep(10000);
 
