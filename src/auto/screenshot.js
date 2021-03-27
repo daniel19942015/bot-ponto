@@ -5,6 +5,7 @@ const {
 } = require("../functions/functions")
 
 let file = {}
+let test = ""
 
 // const run = async () => {
 //     try {
