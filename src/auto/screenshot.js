@@ -34,7 +34,7 @@ async function screenshot() {
         });
 
         console.info('[' + DataHora() + '] [NAV]: Efetuando redirecionamento para a url...');
-        let navigation = await page.goto("https://github.com/login")
+        let navigation = await page.goto("https://relogioonline.com.br/horario/")
             .then(async (success) => {
 
                 await sleep(3000);
