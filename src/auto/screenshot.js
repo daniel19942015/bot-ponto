@@ -24,7 +24,7 @@ async function screeshot() {
         const browser = await puppeteer.launch({
             args: [
                 '--no-sandbox',
-                '--disable-dev-shm-usage'
+                '--disable-setuid-sandbox'
             ], headless: true, ignoreHTTPSErrors: true
         });
         const page = await browser.newPage();
