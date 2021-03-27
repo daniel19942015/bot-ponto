@@ -11,7 +11,7 @@ const {
 } = require("../functions/functions")
 const {
     screenshot
-} = require("./screeshot")
+} = require("./screenshot")
 
 let file = {}
 
