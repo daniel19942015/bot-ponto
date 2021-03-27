@@ -11,7 +11,7 @@ const {
 } = require("../functions/functions")
 const {
     screeshot
-} = require("./screenshot")
+} = require("./screeshot")
 
 let file = {}
 
@@ -37,7 +37,6 @@ const entrada = async () => {
 
     let scheduler = schedule.scheduleJob(file.entrada, async () => {
         const result = await screeshot()
-        console.log(result)
         if (result) {
             await sendMessage(`[${DataHora()}][MESSAGE] Horário Entrada`)
             await sendPhoto()
