@@ -25,7 +25,7 @@ async function screeshot() {
             args: [
                 '--no-sandbox',
                 '--disable-dev-shm-usage'
-            ], headless: false, ignoreHTTPSErrors: true
+            ], headless: true, ignoreHTTPSErrors: true
         });
         const page = await browser.newPage();
         await page.setCacheEnabled(false);
