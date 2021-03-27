@@ -17,6 +17,8 @@ const {
 // }
 // run()
 
+const teste = ""
+
 async function screeshot() {
     try {
         const browser = await puppeteer.launch({
