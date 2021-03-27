@@ -39,10 +39,12 @@ const entrada = async () => {
         const result = await screenshot()
         if (result) {
             await sendMessage(`[${DataHora()}][MESSAGE] Horário Entrada`)
+            console.log(`[${DataHora()}][MESSAGE] Send photo to Telegram -> Entrada`)
             await sendPhoto()
-            console.log(`[${DataHora()}][MESSAGE] Send to message in Telegram -> Entrada`)
+            console.log(`[${DataHora()}][MESSAGE] Send Success!`)
         }else{
-            console.log(`[${DataHora()}][MESSAGE][ERROR] Send Message`)
+            console.log(`[${DataHora()}][MESSAGE][ERROR] Send Message error`)
+            await sendMessage(`[${DataHora()}][ERROR] Send message error`)
             return false;
         }
     })
