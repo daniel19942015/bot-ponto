@@ -17,9 +17,7 @@ const {
 // }
 // run()
 
-const teste = ""
-
-async function screeshot() {
+async function screenshot() {
     try {
         const browser = await puppeteer.launch({
             args: [
@@ -90,5 +88,5 @@ async function screeshot() {
 
 
 module.exports = {
-    screeshot
+    screenshot
 }
