@@ -39,7 +39,7 @@ const entrada = async () => {
 
     let scheduler = schedule.scheduleJob(file.entrada, async () => {
         const week = ["Domingo", "Sábado"]
-        const day = "Segunda"
+        const day = weekday()
         if (day !== week[0] && day !== week[1]) {
             const result = await screenshot()
             if (result) {
