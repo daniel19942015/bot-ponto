@@ -1,21 +1,8 @@
 const puppeteer = require("puppeteer")
-const { 
+const {
     DataHora,
     sleep
 } = require("../functions/functions")
-
-// const run = async () => {
-//     try {
-
-//         await screeshot()
-
-//     } catch (error) {
-
-//         return false;
-
-//     }
-// }
-// run()
 
 async function screenshot() {
     try {
@@ -23,7 +10,7 @@ async function screenshot() {
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox'
-            ], headless: true, ignoreHTTPSErrors: true
+            ], headless: false, ignoreHTTPSErrors: true
         });
         const page = await browser.newPage();
         await page.setCacheEnabled(false);
@@ -34,7 +21,7 @@ async function screenshot() {
         });
 
         console.info('[' + DataHora() + '] [NAV]: Efetuando redirecionamento para a url...');
-        let navigation = await page.goto("https://relogioonline.com.br/horario/")
+        let navigation = await page.goto("https://webponto.norber.com.br/webPontoIndra/")
             .then(async (success) => {
 
                 await sleep(3000);
@@ -44,28 +31,50 @@ async function screenshot() {
                     height: 1080
                 })
 
-                // console.info(`[${DataHora()}] [NAV]: User!`);
-                // const login = await page.$x('//*[@id="login_field"]');
-                // await login[0].type("daniel199257@gmail.com");
+                console.info(`[${DataHora()}] [NAV]: Code!`);
+                const code = await page.$x('//*[@id="CodEmpresa"]');
+                await code[0].type("2");
 
-                // console.info(`[${DataHora()}] [NAV]: Key!`);
-                // const password = await page.$x('//*[@id="password"]');
-                // await password[0].type("Dan549216895");
+                console.info(`[${DataHora()}] [NAV]: User!`);
+                const user = await page.$x('//*[@id="requiredusuario"]');
+                await user[0].type("681091");
 
-                // await page.keyboard.press(String.fromCharCode(13));
+                console.info(`[${DataHora()}] [NAV]: Key!`);
+                const password = await page.$x('//*[@id="requiredsenha"]');
+                await password[0].type("549216895");
+
+                await page.keyboard.press(String.fromCharCode(13));
 
                 await sleep(10000);
 
-                let cache = await page.screenshot({
-                    path: "image.png",
-                    fullPage: true,
-                });
+                let page_to = await page.goto("https://webponto.norber.com.br/webPontoIndra/just_user/IncluirMarcacaoOnLine.asp")
+                    .then(async result => {
 
-                await sleep(5000);
+                        // await page.click('[name="Submit2"]')
 
-                console.info(`[${DataHora()}] [NAV]: Finalizando navegacao!`);
-                await page.close();
-                await browser.close();
+                        // await page.waitForNavigation()
+
+                        let cache = await page.screenshot({
+                            path: "image.png",
+                            fullPage: true,
+                        });
+
+                        await sleep(5000);
+
+                        console.info(`[${DataHora()}] [NAV]: Finalizando navegacao!`);
+                        await page.close();
+                        await browser.close();
+
+                    }).catch(async error => {
+
+                        console.info(`[${DataHora()}][ERRO]<thenCatch_page_to> Houve um erro ${error.message}`);
+                        await page.close();
+                        await browser.close();
+                        return false;
+
+                    })
+
+                return page_to;
 
             }).catch(async (error) => {
 
@@ -73,16 +82,14 @@ async function screenshot() {
                 await page.close();
                 await browser.close();
                 return false;
-
             })
 
-            return true;
+        return true;
 
     } catch (error) {
         console.info(`[${DataHora()}][ERRO]<tryCatch> Houve um erro ${error.message}`);
         return false;
     }
-
 }
 
 

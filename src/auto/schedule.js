@@ -7,7 +7,9 @@ const {
     sendPhoto
 } = require("./sendMessage")
 const {
-    DataHora
+    DataHora,
+    weekday,
+    Hora
 } = require("../functions/functions")
 const {
     screenshot
@@ -36,15 +38,24 @@ const filePath = () => {
 const entrada = async () => {
 
     let scheduler = schedule.scheduleJob(file.entrada, async () => {
-        const result = await screenshot()
-        if (result) {
-            await sendMessage(`[${DataHora()}][MESSAGE] Horário Entrada`)
-            console.log(`[${DataHora()}][MESSAGE] Send photo to Telegram -> Entrada`)
-            await sendPhoto()
-            console.log(`[${DataHora()}][MESSAGE] Send Success!`)
-        }else{
-            console.log(`[${DataHora()}][MESSAGE][ERROR] Send Message error`)
-            await sendMessage(`[${DataHora()}][ERROR] Send message error`)
+        const week = ["Domingo", "Sábado"]
+        const day = "Segunda"
+        if (day !== week[0] && day !== week[1]) {
+            const result = await screenshot()
+            if (result) {
+                const message = `**Horário da entrada** \nBom dia, Daniel!😁 \nPonto batido com sucesso! ✅ \nPonto registrado às ${Hora()}`
+                await sendMessage(message)
+                console.log(`[${DataHora()}][MESSAGE] Send photo to Telegram -> Entrada`)
+                await sendPhoto()
+                console.log(`[${DataHora()}][MESSAGE] Send Success!`)
+            } else {
+                console.log(`[${DataHora()}][MESSAGE][ERROR] Send Message error`)
+                await sendMessage(`[${DataHora()}][ERROR] Send message error`)
+                return false;
+            }
+        } else {
+            console.log(`[${DataHora()}][MESSAGE] Hoje é ${day}! Nao bato o ponto`)
+            await sendMessage(`[${DataHora()}][MESSAGE] Hoje é ${day}! Nao bato o ponto`)
             return false;
         }
     })

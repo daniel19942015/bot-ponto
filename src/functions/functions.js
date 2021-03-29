@@ -35,7 +35,32 @@ function DataHora() {
     return DataHora;
 }
 
+const weekday = () => {
+    try {
+
+        const weekday = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
+        const data = new Date()
+        if(data){
+            return weekday[data.getDay()]
+        }else{
+            return false
+        }
+
+    } catch (error) {
+        console.info(`[${DataHora()}][ERROR]<weekDay> Nao foi possivel obter o dia da semana`)
+        return false
+    }
+
+}
+
+const Hora = () =>{
+    const data = new Date()
+    return `${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}`
+}
+
 module.exports = {
     DataHora,
-    sleep
+    sleep,
+    weekday,
+    Hora
 }

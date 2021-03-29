@@ -7,7 +7,7 @@ const group = "954700360"
 const sendMessage = (msg) => {
     try {
         return new Promise((resolve, reject) => {
-            app.telegram.sendMessage(group, msg)
+            app.telegram.sendMessage(group, msg, parse_mode="Markdown")
             return resolve(true)
         })
     } catch (error) {
