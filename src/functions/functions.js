@@ -1,3 +1,5 @@
+const fs = require("fs")
+
 function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
@@ -6,6 +8,18 @@ function sleep(time) {
 //     let sc = Buffer.from(string, 'base64').toString('utf-8');
 //     return sc;
 // }
+
+const readFile = (path) => {
+    try {
+
+        file = JSON.parse(fs.readFileSync(path))
+        return file;
+
+    } catch (error) {
+        console.log("Error", error.message)
+        return false;
+    }
+}
 
 function DataHora() {
     let Data = new Date();
@@ -62,5 +76,6 @@ module.exports = {
     DataHora,
     sleep,
     weekday,
-    Hora
+    Hora,
+    readFile
 }
